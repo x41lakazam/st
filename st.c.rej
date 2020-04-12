@@ -1,0 +1,11 @@
+--- st.c
++++ st.c
+@@ -218,6 +218,8 @@ char *opt_line  = NULL;
+ char *opt_name  = NULL;
+ char *opt_title = NULL;
+ int oldbutton   = 3; /* button event on startup: 3 = release */
++char *cwd = NULL;
++char *plumber_cmd = plumber;
+ 
+ static CSIEscape csiescseq;
+ static STREscape strescseq;

@@ -1,0 +1,18 @@
+--- x.c
++++ x.c
+@@ -525,6 +531,15 @@ brelease(XEvent *e)
+ 
+ 	if (e->xbutton.button == Button2) {
+ 		xselpaste();
++	} else if (e->xbutton.button == Button3) {
++		switch(child = fork()) {
++			case -1: 
++				return;
++			case 0: 
++				sprintf(cmd, "(cd %s ; %s %s)", cwd, plumber_cmd, sel.primary);
++				execvp( "sh", (char *const []){ "/bin/sh", "-c", cmd, 0 });
++				exit(127);
++		}
+ 	} else if (e->xbutton.button == Button1) {
+ 		if (sel.mode == SEL_READY) {
+ 			getbuttoninfo(e);

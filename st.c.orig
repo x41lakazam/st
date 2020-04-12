@@ -1922,9 +1922,6 @@ strhandle(void)
 	switch (strescseq.type) {
 	case ']': /* OSC -- Operating System Command */
 		switch (par) {
-		case 7:
-			if (narg > 1 && access(strescseq.args[1], X_OK) != -1)
-				cwd = strescseq.args[1];
 		case 0:
 		case 1:
 		case 2:
